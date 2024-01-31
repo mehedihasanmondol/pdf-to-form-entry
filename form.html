@@ -1,0 +1,329 @@
+
+  <html lang="en"><head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+ 
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.gstatic.com" rel="preconnect">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.17.0/font/bootstrap-icons.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/boxicons/2.1.0/css/boxicons.min.css" rel="stylesheet">
+<link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+<link href="https://cdn.quilljs.com/1.3.6/quill.bubble.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.94/remixicon.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/simple-datatables@6.1.0/style.css" rel="stylesheet">
+
+
+  <!-- Template Main CSS File -->
+  <link href="assets/css/styleX.css" rel="stylesheet">
+  <style>
+  /* Style for all div elements within the form */
+/* Style for the button */
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+/* Style for the button on hover */
+.button:hover {
+    background-color: #0056b3; /* Change the background color on hover */
+    transform: scale(1.1); /* Scale the button slightly on hover */
+}
+
+  </style>
+</head>
+
+<body>
+
+    <!-- ======= Header ======= -->
+
+<form action="" method="POST" accept-charset="utf-8" id="form" enctype="multipart/form-data">
+    <label for="multiplefileupload">
+        <!-- Add your label content if needed -->
+    </label>
+    <input id="multiplefileupload" type="file" name="multiplefileupload" accept=".pdf" style="display: block;" onchange="autoSubmit()">
+</form>
+
+<script>
+    function autoSubmit() {
+        document.getElementById("form").submit();
+    }
+</script>
+
+  <main id="main" class="main">
+    <section class="section">
+
+      <form action="cer.php" target="_BLANK" method="POST">
+        <div id="app">
+            <div class="main-wrapper main-wrapper-1">
+                <div class="main-content" style="min-height: 530px;">
+                    <section class="bg-diffrent">
+                        <div class="container">
+            
+
+                                <input type="text" name="lang" value="bn" style="display: none;">
+                                
+                            
+
+							
+
+                                    <div class="row mt-5">
+									<div class="col-md-6 mb-4">
+										<div class="form-group">
+											<label for="first">Birth Register Office Name in English</label>
+											<input type="text" name="officeAddress1" id="officeAddress1" class="form-control" placeholder="Jamalpur Union Parishad" value="">
+										</div>
+									</div>
+									<div class="col-md-6 mb-4">
+										<div class="form-group">
+											<label for="first">Birth Register Office Address in English</label>
+											<input type="text" name="officeAddress2" id="officeAddress2" class="form-control" placeholder="UpzilaName, Zila" value="">
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-6 mb-4">
+										<div class="form-group">
+											<label for="first">Birth Registration Number</label>
+											<div id="brn-error" class="error-message" style="color: red; display: none;">Please input 17 Digits Birth Register Number.</div>
+											<input type="text" name="brn" id="brn" class="form-control" placeholder="Input 17 digits Birth Register Number" required pattern="[0-9]{17}" title="Please enter a 17-digit number">
+										</div>
+									</div>
+									<div class="col-md-6 mb-4">
+										<div class="form-group">
+											<label for="first">Date of Registration</label>
+											<div id="dor-error" class="error-message" style="color: red; display: none;">Invalid date format. Use DD/MM/YYYY format.</div>
+											<input type="text" name="dor" id="dor" class="form-control" placeholder="অনলানে যে তারিখ আছে । DD/MM/YYYY" pattern="^(0[1-9]|[1-2][0-9]|3[0-1])\/(0[1-9]|1[0-2])\/\d{4}$" required>
+										</div>
+									</div>
+										<div class="col-md-6 mb-4">
+										<div class="form-group">
+											<label for="first">Date of Issuance</label>
+											<div id="doi-error" class="error-message" style="color: red; display: none;">Invalid date format. Use DD/MM/YYYY format.</div>
+											<input type="text" name="doi" id="doi" class="form-control" placeholder="অনলানে যে তারিখ আছে । DD/MM/YYYY" pattern="^(0[1-9]|[1-2][0-9]|3[0-1])\/(0[1-9]|1[0-2])\/\d{4}$" required>
+										</div>
+									</div>
+								</div>
+                                    <div class="row">
+                                        <div class="col-md-6 mb-4">
+                                            <div class="form-group">
+                                                <label for="first">Date of Birth</label>
+										
+                                            <div id='date_string'></div>
+											<input type="text" name="date" id="date" value="">
+											
+												
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 mb-4">
+                                            <div class="form-group">
+                                                <label for="first">Gender</label>
+                                                <select name="sex" id="sex" class="form-select">
+                                                    <option value="Male">Male</option>
+                                                    <option value="Female">Female</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6 mb-4">
+                                            <div class="form-group">
+                                                <label for="first">নাম (বাংলা)</label>
+                                                <input type="text" name="name_bangla" id="name_bangla" class="form-control" placeholder="বাংলায় নাম লেখুন...">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 mb-4">
+                                            <div class="form-group">
+                                                <label for="first">Name(English)</label>
+                                                <input type="text" name="name_english" id="name_english" class="form-control" placeholder="Type your name in English...">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-6 mb-4">
+                                            <div class="form-group">
+                                                <label for="first">পিতা নাম (বাংলা)</label>
+                                                <input type="text" name="father_bangla" id="father_bangla" class="form-control" placeholder="পিতার নাম বাংলায় লেখুন...">
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6 mb-4">
+                                            <div class="form-group">
+                                                <label for="first">Father Name(English)</label>
+                                                <input type="text" name="father_english" id="father_english" class="form-control" placeholder="Father's name in English...">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-6 mb-4">
+                                            <div class="form-group">
+                                                <label for="first">মাতার নাম (বাংলা)</label>
+                                                <input type="text" name="mother_bangla" id="mother_bangla" class="form-control" placeholder="মাতার নাম বাংলায় লেখুন...">
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6 mb-4">
+                                            <div class="form-group">
+                                                <label for="first">Mother Name(English)</label>
+                                                <input type="text" name="mother_english" id="mother_english" class="form-control" placeholder="Mother's name in English...">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-6 mb-4">
+                                            <div class="form-group">
+                                                <label for="first">জন্মস্থান (বাংলা) জেলা, দেশ</label>
+                                                <input type="text" name="pob_bangla" id="pob_bangla" class="form-control" value="" placeholder="জন্মস্থান লেখুন...">
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6 mb-4">
+                                            <div class="form-group">
+                                                <label for="first">Place of Birth(English) Zila,Country</label>
+                                                <input type="text" name="pob_english" id="pob_english" class="form-control" value="" placeholder=" Your place of birth...">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-6 mb-4">
+                                            <div class="form-group">
+                                                <label for="first">স্থায়ী ঠিকানা (বাংলা)</label>  
+												<textarea name="permanent_bangla" id="permanent_bangla" cols="60" rows="2" class="form-control" placeholder="স্থায়ী ঠিকানা বাংলায় লেখুন...">গ্রাম, ডাকঘর,, 
+											
+											</textarea>
+
+																						</div>
+																					</div>
+
+																					<div class="col-md-6 mb-4">
+																						<div class="form-group">
+																							<label for="first">Permanent(English)</label>
+																							<textarea name="permanent_english" id="permanent_english" cols="60" rows="2" class="form-control" placeholder="Permanent Address in English...">Village PostOffice,, 
+											
+											</textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-6 mb-4">
+                                            <div class="form-group">
+                                                <label for="first">পিতার জাতীয়তা (বাংলা)</label>
+                                                <input type="text" name="father_n_bangla" id="father_n_bangla" class="form-control" value="বাংলাদেশী" placeholder="পিতার জাতীয়তা লেখুন...">
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6 mb-4">
+                                            <div class="form-group">
+                                                <label for="first">Father Nationality(English)</label>
+                                                <input type="text" name="father_n_english" id="father_n_english" class="form-control" value="Bangladeshi" placeholder="Inter your father nationality...">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-6 mb-4">
+                                            <div class="form-group">
+                                                <label for="first">মাতার জাতীয়তা (বাংলা)</label>
+                                                <input type="text" name="mother_n_bangla" id="mother_n_bangla" class="form-control" value="বাংলাদেশী" placeholder="মাতার জাতীয়তা লেখুন...">
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6 mb-4">
+                                            <div class="form-group">
+                                                <label for="first">Mother Nationality(English)</label>
+                                                <input type="text" name="mother_n_english" id="mother_n_english" class="form-control" value="Bangladeshi" placeholder="Inter your mother nationality...">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div style="display: flex; justify-content: center; margin-bottom: 50px;">
+                                            <button class="button">button</button></div>
+                                </div>
+													<div style="display: flex; justify-content: center; margin-bottom: 50px;">
+						
+						</div>
+
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+			
+
+		</form>
+      <!-- Existing HTML code here -->
+
+
+
+
+    </section>
+</main>
+
+
+<input type="hidden" id="CUSTOMSESSIONID" value="/ev6qim9yF/lgI0QAtFBiUxBdTFZWVU2MlVjQ2JKK2Q4NC9MOUVMYW1SUFE3VjgzdldWcWRCb2wybkk9">
+<input type="hidden" id="TS01be4f8c" value="/ev6qim9yF/lgI0QAtFBiUxBdTFZWVU2MlVjQ2JKK2Q4NC9MOUVMYW1SUFE3VjgzdldWcWRCb2wybkk9">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js" integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script>
+        // JavaScript to show individual error messages for each date field
+        const dateFields = document.querySelectorAll("#brn, #dob, #dor, #doi");
+
+        dateFields.forEach(function(input) {
+            const errorDiv = document.querySelector(`#${input.id}-error`);
+            input.addEventListener("input", function() {
+                if (!this.validity.valid) {
+                    errorDiv.style.display = "block";
+                } else {
+                    errorDiv.style.display = "none";
+                }
+            });
+        });
+    </script>
+  <!-- ======= Footer ======= -->
+  
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.35.1/apexcharts.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.5.2/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.3.2/echarts.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/quill/1.3.6/quill.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/simple-datatables/3.3.0/simple-datatables.js"></script>
+<script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/php-email-form/3.2.2/validate.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+
+
+  <!-- Template Main JS File -->
+  <script src="assets/js/main.js"></script>
+
+
+
+</body>
+</html>

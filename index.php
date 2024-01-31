@@ -22,12 +22,18 @@ function get_pdf_data($file){
     $parser = new \Smalot\PdfParser\Parser();
     $pdf = $parser->parseFile($file);
     $text = $pdf->getText();
+
+    return $text;
+
     $actual_text = get_string_after($text,"REGISTRATION DATE");
     return $actual_text;
 
 }
 
-$string = get_pdf_data("2.pdf");
+$pdf_data = get_pdf_data("2.pdf");
+
+
+$string = get_string_after($pdf_data,"REGISTRATION DATE");
 
 
 function get_value_by_pattern($data,$key){
@@ -75,13 +81,13 @@ function get_value_by_position($data,$key_from,$key_to){
 
     return substr($data,$start,$limit);
 }
-get_value_by_position('mahadi hasan noyon','mahadi','noyon');
 
-print_r($string);
 
-$data = array(
-        "registration_date" => get_value_by_pattern($string,"ISSUANCE DATE")
-);
+$data = array();
+
+$data['registration_office_address'] = get_value_by_pattern_2($pdf_data,"Register office :");
+
+$data['registration_date'] = get_value_by_pattern($string,"ISSUANCE DATE");
 $data['registration_office'] = get_value_by_pattern($string,$data['registration_date']);
 $data['issuance_date'] = get_value_by_pattern_2($string,$data['registration_office']);
 
