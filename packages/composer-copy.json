@@ -1,0 +1,19 @@
+{
+    "name": "mhnoy/packages",
+    "autoload": {
+        "psr-4": {
+            "Mhnoy\\Packages\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Mehedi Hasan Mondol",
+            "email": "mehedihasanmondol.online@gmail.com"
+        }
+    ],
+    "require": {
+        "smalot/pdfparser": "^2.8",
+        "davincho/tabulapdf-php-wrapper": "^0.1.3",
+        "gufy/pdftohtml-php": "~2"
+    }
+}
