@@ -1,19 +1,5 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-
 <?php
-
-echo "<pre>";
 require_once 'packages/vendor/autoload.php';
-
 function get_string_after($text,$key){
     return substr($text,strpos($text,$key));
 }
@@ -112,13 +98,7 @@ $data['father_name_english'] = get_value_by_position($bangla_string,"FATHER'S NA
 $data['father_nationality_bangla'] = get_value_by_position($bangla_string,"পিতার জাতীয়তা","FATHER'S NATIONALITY");
 $data['father_nationality_english'] = get_value_by_position($bangla_string,"FATHER'S NATIONALITY","end");
 
-
+echo json_encode($data);
 print_r($data);
 
-
-echo "</pre>";
 ?>
-</body>
-</html>
-<pre>
-

@@ -11,22 +11,22 @@
  
 
   <!-- Google Fonts -->
-  <link href="https://fonts.gstatic.com" rel="preconnect">
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+  <!--<link href="https://fonts.gstatic.com" rel="preconnect">-->
+  <!--<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">-->
 
-  <!-- Vendor CSS Files -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.5.2/css/bootstrap.min.css" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.17.0/font/bootstrap-icons.css" rel="stylesheet">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/boxicons/2.1.0/css/boxicons.min.css" rel="stylesheet">
-<link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
-<link href="https://cdn.quilljs.com/1.3.6/quill.bubble.css" rel="stylesheet">
-<link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.94/remixicon.css" rel="stylesheet">
-<link href="https://cdn.jsdelivr.net/npm/simple-datatables@6.1.0/style.css" rel="stylesheet">
+  <!--&lt;!&ndash; Vendor CSS Files &ndash;&gt;-->
+  <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">-->
+  <!--<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.5.2/css/bootstrap.min.css" rel="stylesheet">-->
+  <!--<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.17.0/font/bootstrap-icons.css" rel="stylesheet">-->
+  <!--<link href="https://cdnjs.cloudflare.com/ajax/libs/boxicons/2.1.0/css/boxicons.min.css" rel="stylesheet">-->
+<!--<link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">-->
+<!--<link href="https://cdn.quilljs.com/1.3.6/quill.bubble.css" rel="stylesheet">-->
+<!--<link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.94/remixicon.css" rel="stylesheet">-->
+<!--<link href="https://cdn.jsdelivr.net/npm/simple-datatables@6.1.0/style.css" rel="stylesheet">-->
 
 
-  <!-- Template Main CSS File -->
-  <link href="assets/css/styleX.css" rel="stylesheet">
+  <!--&lt;!&ndash; Template Main CSS File &ndash;&gt;-->
+  <!--<link href="assets/css/styleX.css" rel="stylesheet">-->
   <style>
   /* Style for all div elements within the form */
 /* Style for the button */
@@ -49,6 +49,7 @@
 }
 
   </style>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 </head>
 
 <body>
@@ -59,13 +60,45 @@
     <label for="multiplefileupload">
         <!-- Add your label content if needed -->
     </label>
-    <input id="multiplefileupload" type="file" name="multiplefileupload" accept=".pdf" style="display: block;" onchange="autoSubmit()">
+    <input id="multiplefileupload" type="file" name="multiplefileupload" accept=".pdf" style="display: block;" onchange="autoSubmit()" required>
 </form>
 
 <script>
+
     function autoSubmit() {
-        document.getElementById("form").submit();
+        $("#form").submit();
     }
+
+    $(document).ready(function () {
+        console.log($("#form"))
+        $("#form").submit(function (e) {
+
+            e.preventDefault();
+
+            // Create a FormData object from the form
+            var formData = new FormData(this);
+
+            // Make an AJAX request using jQuery
+            $.ajax({
+                url: 'getPDFdata.php',
+                type: 'POST',
+                data: formData,
+                processData: false,  // Prevent jQuery from processing the data
+                contentType: false,  // Prevent jQuery from setting the content type
+                success: function(response) {
+                    var json_data = JSON.parse(response);
+                    Object.keys(json_data).forEach(function (key) {
+                        $("#"+key).val(json_data[key])
+                    });
+
+
+                },
+                error: function(error) {
+                    console.error('Error:', error);
+                }
+            });
+        })
+    });
 </script>
 
   <main id="main" class="main">
@@ -308,20 +341,21 @@
 
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
-  <!-- Vendor JS Files -->
- <script src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.35.1/apexcharts.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.5.2/js/bootstrap.bundle.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.3.2/echarts.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/quill/1.3.6/quill.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/simple-datatables/3.3.0/simple-datatables.js"></script>
-<script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/php-email-form/3.2.2/validate.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+  <!--&lt;!&ndash; Vendor JS Files &ndash;&gt;-->
+ <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.35.1/apexcharts.min.js"></script>-->
+<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.5.2/js/bootstrap.bundle.min.js"></script>-->
+<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>-->
+<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.3.2/echarts.min.js"></script>-->
+<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/quill/1.3.6/quill.min.js"></script>-->
+<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/simple-datatables/3.3.0/simple-datatables.js"></script>-->
+<!--<script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js"></script>-->
+<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/php-email-form/3.2.2/validate.js"></script>-->
+<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>-->
 
 
-  <!-- Template Main JS File -->
-  <script src="assets/js/main.js"></script>
+  <!--&lt;!&ndash; Template Main JS File &ndash;&gt;-->
+  <!--<script src="assets/js/main.js"></script>-->
+
 
 
 
