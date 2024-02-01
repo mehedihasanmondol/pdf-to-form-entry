@@ -121,6 +121,7 @@ $data['father_n_english'] = get_value_by_position($bangla_string,"FATHER'S NATIO
 $data['sex'] = ucfirst(strtolower($data['sex']));
 $data['date'] = make_valid_date($data['date']);
 $data['dor'] = make_valid_date($data['dor']);
+$data['doi'] = make_valid_date($data['doi']);
 
 
 
